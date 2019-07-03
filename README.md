@@ -5,3 +5,5 @@ With this project, data that is sent is not encrypted, but every request is auth
 
 The server is connected to a mysql database that tan only be queryed by the server (and not the clients)
 This makes a protection against unwanted queries and not to expose the sql passwords.
+
+Note: Since this is a proof of concept, every test files have been left.
