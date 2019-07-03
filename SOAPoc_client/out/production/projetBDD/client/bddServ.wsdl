@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<wsdl:definitions name="bdd"
+                  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+                  xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+                  xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+
+    <xsd:documentation></xsd:documentation>
+
+
+    <wsdl:message name="getAllRequest">
+    </wsdl:message>
+    <wsdl:message name="getAllResponse">
+        <wsdl:part name="rep" type="xsd:string"></wsdl:part>
+    </wsdl:message>
+
+    <wsdl:message name="getIdRequest">
+        <wsdl:part name="ip" type="xsd:string"></wsdl:part>
+        <wsdl:part name="device_data" type="xsd:string"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="getIdResponse">
+        <wsdl:part name="rep" type="xsd:integer"></wsdl:part>
+    </wsdl:message>
+
+    <wsdl:message name="getOneRequest">
+        <wsdl:part name="question" type="xsd:integer"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="getOneResponse">
+        <wsdl:part name="rep" type="xsd:string"></wsdl:part>
+    </wsdl:message>
+
+    <wsdl:message name="submitAnsRequest">
+        <wsdl:part name="id" type="xsd:integer"></wsdl:part>
+        <wsdl:part name="question" type="xsd:integer"></wsdl:part>
+        <wsdl:part name="reponse" type="xsd:string"></wsdl:part>
+        <wsdl:part name="auth" type="xsd:string"></wsdl:part>
+
+    </wsdl:message>
+    <wsdl:message name="submitAnsResponse">
+        <wsdl:part name="out" type="xsd:integer"></wsdl:part>
+    </wsdl:message>
+
+
+    <wsdl:portType name="bdd">
+        <wsdl:operation name="getAll">
+            <wsdl:input message="xsd:getAllRequest"/>
+            <wsdl:output message="xsd:getAllResponse"/>
+        </wsdl:operation>
+
+        <wsdl:operation name="getId">
+            <wsdl:input message="xsd:getIdRequest"/>
+            <wsdl:output message="xsd:getIdResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="getOne">
+            <wsdl:input message="xsd:getOneRequest"/>
+            <wsdl:output message="xsd:getOneResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="submitAns">
+            <wsdl:input message="xsd:submitAnsRequest"/>
+            <wsdl:output message="xsd:submitAnsResponse"/>
+        </wsdl:operation>
+
+    </wsdl:portType>
+
+    <wsdl:binding name="bdd" type="bdd">
+        <wsdl:operation name="getAll">
+            <soap:operation soapAction="http://localhost:8888/SoaPOC/bddserv.php?wsdl"/>
+            <wsdl:input>
+                <soap:body use="literal" namespace="bdd"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal" namespace="bdd"/>
+            </wsdl:output>
+        </wsdl:operation>
+
+        <wsdl:operation name="getOne">
+            <soap:operation soapAction="http://localhost:8888/SoaPOC/bddserv.php?wsdl"/>
+            <wsdl:input>
+                <soap:body use="literal" namespace="bdd"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal" namespace="bdd"/>
+            </wsdl:output>
+        </wsdl:operation>
+
+        <wsdl:operation name="getId">
+            <soap:operation soapAction="http://localhost:8888/SoaPOC/bddserv.php?wsdl"/>
+            <wsdl:input>
+                <soap:body use="literal" namespace="bdd"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal" namespace="bdd"/>
+            </wsdl:output>
+        </wsdl:operation>
+
+        <wsdl:operation name="submitAns">
+            <soap:operation soapAction="http://localhost:8888/SoaPOC/bddserv.php?wsdl"/>
+            <wsdl:input>
+                <soap:body use="literal" namespace="bdd"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal" namespace="bdd"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+
+    <wsdl:service name="bdd">
+        <wsdl:port binding="bdd" name="bdd">
+            <soap:address location="http://localhost:8888/SoaPOC/bddserv.php?wsdl"/>
+        </wsdl:port>
+    </wsdl:service>
+
+</wsdl:definitions>
